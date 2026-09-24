@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b4w1j2e68haxw" path="res://assets/ores.png" id="2_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://b5biai3tne2pr" path="res://scenes/player.tscn" id="2_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://den8eu37wiass" path="res://scenes/procedural_gen_world.tscn" id="3_lnu2h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p57ef"]
 texture = ExtResource("2_lbhrr")
@@ -75,10 +76,13 @@ sources/0 = SubResource("TileSetAtlasSource_p57ef")
 
 [node name="Game" type="Node2D" unique_id=1825972191]
 
+[node name="procedural_gen_world" parent="." unique_id=1581661785 instance=ExtResource("3_lnu2h")]
+
 [node name="player" parent="." unique_id=1836166188 instance=ExtResource("2_lnu2h")]
-position = Vector2(186, 295)
+position = Vector2(243, -278)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1257081727]
+position = Vector2(9, -512)
 scale = Vector2(2, 2)
 tile_map_data = PackedByteArray("AAADAA4AAAACAAIAAAADAA8AAAACAAIAAAAEAA4AAAACAAIAAAAEAA8AAAACAAIAAAAFAA4AAAACAAIAAAAFAA8AAAACAAIAAAAGAA4AAAACAAIAAAAGAA8AAAACAAIAAAAHAA4AAAACAAIAAAAHAA8AAAACAAIAAAAIAA4AAAACAAIAAAAIAA8AAAACAAIAAAAJAA4AAAACAAIAAAAJAA8AAAACAAIAAAAKAA4AAAACAAIAAAAKAA8AAAACAAIAAAALAA4AAAACAAIAAAALAA8AAAACAAIAAAAMAA4AAAACAAIAAAAMAA8AAAACAAIAAAA=")
 tile_set = SubResource("TileSet_mwfs3")

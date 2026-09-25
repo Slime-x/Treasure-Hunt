@@ -9,6 +9,8 @@ func _input(event):
 			print("CLICK")
 			tile = local_to_map(get_global_mouse_position())
 			block_picked_up = true
+		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
+			block_picked_up = false
 func _process(_delta):
 	if block_picked_up == true:
 		var player_tile = local_to_map(player.global_position)

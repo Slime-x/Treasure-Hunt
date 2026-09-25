@@ -4,7 +4,7 @@ extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 var is_jumping = false
-
+var direction = 1
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -22,7 +22,7 @@ func _physics_process(delta: float) -> void:
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("left", "right")
+	direction = Input.get_axis("left", "right")
 	
 	if direction < 0:
 		$animation.flip_h = true

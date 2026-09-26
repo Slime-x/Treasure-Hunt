@@ -15,6 +15,7 @@ func _input(event):
 			tile = local_to_map(get_global_mouse_position())
 			source_id = get_cell_source_id(tile)
 			atlas_position = get_cell_atlas_coords(tile)
+			erase_cell(tile)
 			picked_up_block.global_position = to_global(map_to_local(tile))
 			block_picked_up = true
 		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed and block_picked_up == true:
@@ -38,10 +39,3 @@ func _process(_delta):
 		picked_up_block.global_position = to_global(map_to_local(new_tile))
 		tile = new_tile
 		
-	if falling == true:
-		if get_cell_source_id(tile+Vector2i(0,1)) != -1:
-			falling = false
-		else:
-			erase_cell(tile)
-			tile += Vector2i(0,1)
-			set_cell(tile,source_id,atlas_position)

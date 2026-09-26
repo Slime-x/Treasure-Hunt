@@ -6,6 +6,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bx3dq"]
 
 [node name="RigidBody2D" type="RigidBody2D" unique_id=1671891308]
+collision_layer = 7
+collision_mask = 7
 script = ExtResource("1_uds04")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=923738958]

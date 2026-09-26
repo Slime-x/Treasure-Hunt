@@ -18,6 +18,9 @@ func _input(event):
 			erase_cell(tile)
 			picked_up_block.global_position = to_global(map_to_local(tile))
 			block_picked_up = true
+		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed and block_picked_up == true:
+			block_picked_up = false
+			picked_up_block.freeze = true
 
 func _process(delta: float) -> void:
 	if block_picked_up == true:

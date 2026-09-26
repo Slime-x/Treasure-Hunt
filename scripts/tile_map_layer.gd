@@ -1,5 +1,6 @@
 extends TileMapLayer
 @onready var player = get_tree().current_scene.get_node("player")
+@onready var carried_block_layer = get_tree().current_scene.get_node("CarriedBlockLayer")
 var block_picked_up = false
 var tile
 var source_id
@@ -15,6 +16,8 @@ func _input(event):
 			block_picked_up = true
 		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
 			block_picked_up = false
+			carried_block_layer.erase_cell(tile)
+			set_cell(tile,source_id,atlas_position)
 func _process(_delta):
 	if block_picked_up == true:
 		var player_tile = local_to_map(player.global_position)
@@ -24,5 +27,6 @@ func _process(_delta):
 		elif player.direction < 0:
 			new_tile = player_tile + Vector2i(1,0)
 		erase_cell(tile)
-		set_cell(new_tile, source_id, Vector2i(atlas_position))
+		carried_block_layer.erase_cell(tile)
+		carried_block_layer.set_cell(new_tile, source_id, Vector2i(atlas_position))
 		tile = new_tile

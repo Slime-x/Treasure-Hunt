@@ -5,7 +5,8 @@ var block_picked_up = false
 var tile
 var source_id
 var atlas_position
-# Called when the node enters the scene tree for the first time.
+var falling = false
+# Called when the node enters the scene tree for the first time.1
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed and block_picked_up == false:
@@ -14,10 +15,11 @@ func _input(event):
 			source_id = get_cell_source_id(tile)
 			atlas_position = get_cell_atlas_coords(tile)
 			block_picked_up = true
-		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
+		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed and block_picked_up == true:
 			block_picked_up = false
 			carried_block_layer.erase_cell(tile)
 			set_cell(tile,source_id,atlas_position)
+			falling = true
 func _process(_delta):
 	if block_picked_up == true:
 		var player_tile = local_to_map(player.global_position)
@@ -30,3 +32,10 @@ func _process(_delta):
 		carried_block_layer.erase_cell(tile)
 		carried_block_layer.set_cell(new_tile, source_id, Vector2i(atlas_position))
 		tile = new_tile
+	if falling == true:
+		if get_cell_source_id(tile+Vector2i(0,1)) != -1:
+			falling = false
+		else:
+			erase_cell(tile)
+			tile += Vector2i(0,1)
+			set_cell(tile,source_id,atlas_position)

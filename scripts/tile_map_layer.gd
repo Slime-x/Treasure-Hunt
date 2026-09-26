@@ -18,24 +18,8 @@ func _input(event):
 			erase_cell(tile)
 			picked_up_block.global_position = to_global(map_to_local(tile))
 			block_picked_up = true
-		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed and block_picked_up == true:
-			block_picked_up = false
-			carried_block_layer.erase_cell(tile)
-			set_cell(tile,source_id,atlas_position)
-			falling = true
-func _process(_delta):
-	if block_picked_up == true:
-		picked_up_block.visible = true
-		var player_tile = local_to_map(player.global_position)
-		var new_tile = tile
-		
-		if player.direction > 0:
-			new_tile = player_tile + Vector2i(-1,0)
-		elif player.direction < 0:
-			new_tile = player_tile + Vector2i(1,0)
-		erase_cell(tile)
-		
 
-		picked_up_block.global_position = to_global(map_to_local(new_tile))
-		tile = new_tile
-		
+func _process(delta: float) -> void:
+	if block_picked_up == true:
+		picked_up_block.global_position = player.global_position + Vector2(16,0)
+		picked_up_block.visible = true

@@ -21,10 +21,12 @@ func generate_world():
 		for y in range(height):
 			var noise_val = noise.get_noise_2d(x,y)
 			noise_val_arr.append(noise_val)
-			if noise_val >= 0.0:
+			if noise_val >= 0.0 and 0.5 >= noise_val:
 				tile_map.set_cell(Vector2(x,y), source_id_dirt, dirt)
-			if noise_val < 0.0:
+			if noise_val < 0.0 and -0.46 <= noise_val:
 				tile_map.set_cell(Vector2(x,y), source_id_ores, coal)
+			if noise_val < -0.6:
+				tile_map.set_cell(Vector2(x,y), source_id_ores, diamont)
 	print("highest", noise_val_arr.max())
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

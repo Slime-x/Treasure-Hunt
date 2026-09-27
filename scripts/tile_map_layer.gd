@@ -30,6 +30,6 @@ func _input(event):
 				carried_block.picked_up = false
 				carried_block = null
 				block_picked_up = false
-			
+	print(source_id)
 			
 	

@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b5biai3tne2pr" path="res://scenes/player.tscn" id="2_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://den8eu37wiass" path="res://scenes/procedural_gen_world.tscn" id="3_lnu2h"]
 [ext_resource type="Texture2D" uid="uid://ce01mutuurhkq" path="res://assets/tilemap_packed.png" id="4_lbhrr"]
+[ext_resource type="Script" uid="uid://b2iws6fh0wpdi" path="res://scenes/area_2d.gd" id="5_iywne"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p57ef"]
 texture = ExtResource("2_lbhrr")
@@ -565,6 +566,9 @@ texture = ExtResource("4_lbhrr")
 sources/0 = SubResource("TileSetAtlasSource_iywne")
 sources/1 = SubResource("TileSetAtlasSource_u5sy4")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bx3dq"]
+size = Vector2(378, 20)
+
 [node name="Game" type="Node2D" unique_id=1825972191]
 
 [node name="procedural_gen_world" parent="." unique_id=1581661785 instance=ExtResource("3_lnu2h")]
@@ -580,3 +584,14 @@ tile_set = SubResource("TileSet_mwfs3")
 
 [node name="CarriedBlockLayer" type="TileMapLayer" parent="." unique_id=2050846350]
 tile_set = SubResource("TileSet_bx3dq")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=854363226]
+collision_layer = 7
+collision_mask = 2
+script = ExtResource("5_iywne")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1394243719]
+position = Vector2(207, -74)
+shape = SubResource("RectangleShape2D_bx3dq")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

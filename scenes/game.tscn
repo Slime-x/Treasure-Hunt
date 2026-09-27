@@ -797,12 +797,15 @@ texture_region_size = Vector2i(18, 18)
 tile_size = Vector2i(18, 18)
 sources/0 = SubResource("TileSetAtlasSource_gee14")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mfa3n"]
+size = Vector2(13.999989, 13.000061)
+
 [node name="Game" type="Node2D" unique_id=1825972191]
 
 [node name="procedural_gen_world" parent="." unique_id=1581661785 instance=ExtResource("3_lnu2h")]
 
 [node name="player" parent="." unique_id=1836166188 instance=ExtResource("2_lnu2h")]
-position = Vector2(894, 1217)
+position = Vector2(809, -176)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1257081727]
 position = Vector2(9, -512)
@@ -828,4 +831,12 @@ scale = Vector2(6, 6)
 tile_map_data = PackedByteArray("AAAWACAAAAAHAAMAAAA=")
 tile_set = SubResource("TileSet_tugg1")
 
+[node name="Area2D" type="Area2D" parent="TileMapLayer2" unique_id=847780203]
+script = ExtResource("5_iywne")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMapLayer2/Area2D" unique_id=794086767]
+position = Vector2(405, 585.5001)
+shape = SubResource("RectangleShape2D_mfa3n")
+
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer2/Area2D" to="TileMapLayer2/Area2D" method="_on_body_entered"]

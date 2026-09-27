@@ -1,6 +1,6 @@
 extends TileMapLayer
 @onready var carried_block_layer = get_tree().current_scene.get_node("CarriedBlockLayer")
-# @onready var picked_up_block = get_tree().current_scene.get_node("PickedUpBlock")
+var carried_block = null
 var picked_up_block = preload("res://scenes/PickedUpBlock.tscn")
 var block_added = false
 var amount_of_blocks = 0
@@ -21,4 +21,9 @@ func _input(event):
 			if atlas_position != Vector2i(-1,-1):
 				var new_block = picked_up_block.instantiate()
 				add_child(new_block)
-#		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed and block_picked_up == true:
+				block_picked_up = true
+				carried_block = new_block
+		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed and block_picked_up == true:
+			block_picked_up = false
+			
+			

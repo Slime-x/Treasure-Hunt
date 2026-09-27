@@ -24,5 +24,5 @@ func _input(event):
 
 func _process(delta: float) -> void:
 	if block_picked_up == true:
-		picked_up_block.global_position = player.global_position + Vector2(16,0)
+		picked_up_block.global_position = player.global_position + Vector2(18,0)
 		picked_up_block.visible = true

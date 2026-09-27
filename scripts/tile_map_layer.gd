@@ -26,8 +26,7 @@ func _input(event):
 
 func _process(delta: float) -> void:
 	if block_picked_up == true and block_added == false:
-		for i in amount_of_blocks:
-			var new_block = picked_up_block.instantiate()
-			add_child(new_block)
-			print(new_block)
-			block_added = true
+		var new_block = picked_up_block.instantiate()
+		add_child(new_block)
+		print(new_block)
+		block_added = true

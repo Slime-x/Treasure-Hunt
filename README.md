@@ -1,5 +1,5 @@
 # Treasure-Hunt
-This is a game about trying to find a diamond buried somewhere underground. We have also followed this weeks theme of "treasure".
+This is a game about trying to find a diamond buried somewhere underground. We have also followed the weeks theme of "treasure".
 
 # How to play
 ### Controls

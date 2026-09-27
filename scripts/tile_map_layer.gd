@@ -9,6 +9,7 @@ var tile
 var source_id
 var atlas_position
 var falling = false
+var new_block
 # Called when the node enters the scene tree for the first time.1
 func _input(event):
 	if event is InputEventMouseButton:
@@ -21,9 +22,14 @@ func _input(event):
 			if atlas_position != Vector2i(-1,-1):
 				var new_block = picked_up_block.instantiate()
 				add_child(new_block)
-				block_picked_up = true
 				carried_block = new_block
-		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed and block_picked_up == true:
-			block_picked_up = false
+				carried_block.picked_up = true
+				block_picked_up = true
+		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
+			if carried_block != null:
+				carried_block.picked_up = false
+				carried_block = null
+				block_picked_up = false
 			
 			
+	

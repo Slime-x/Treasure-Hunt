@@ -14,16 +14,18 @@ func _process(delta: float) -> void:
 	#print(global_position)
 	#if tilemaplayer.block_picked_up == true:
 		#global_position = player.global_position + Vector2(20,0)
-	if tilemaplayer.block_picked_up == true:
+	if picked_up == true:
 		global_position = player.global_position + Vector2(20,0)
 		freeze = true
 	else:
 		freeze = false
-	#print(picked_up)
+	print(picked_up)
 
 func _input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed and tilemaplayer.block_picked_up == false:
 			print("I was clicked!")
 			picked_up = true
+			#tilemaplayer.block_picked_up = true
+			tilemaplayer.carried_block = self
 			tilemaplayer.block_picked_up = true

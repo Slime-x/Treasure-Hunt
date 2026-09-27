@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://b5biai3tne2pr" path="res://scenes/player.tscn" id="2_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://den8eu37wiass" path="res://scenes/procedural_gen_world.tscn" id="3_lnu2h"]
 [ext_resource type="Texture2D" uid="uid://ce01mutuurhkq" path="res://assets/tilemap_packed.png" id="4_lbhrr"]
-[ext_resource type="PackedScene" uid="uid://b8sro74dmiulj" path="res://scenes/PickedUpBlock.tscn" id="5_iywne"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p57ef"]
 texture = ExtResource("2_lbhrr")
@@ -581,5 +580,3 @@ tile_set = SubResource("TileSet_mwfs3")
 
 [node name="CarriedBlockLayer" type="TileMapLayer" parent="." unique_id=2050846350]
 tile_set = SubResource("TileSet_bx3dq")
-
-[node name="PickedUpBlock" parent="." unique_id=1671891308 instance=ExtResource("5_iywne")]
